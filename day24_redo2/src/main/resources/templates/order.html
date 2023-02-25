@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form action="/order" method="Post">
+        <table>
+            <tr>
+                <td>Customer Name:</td>
+                <td>
+                    <input type="text" name="name">
+                </td>
+            </tr>
+            <tr>
+                <td>Item: </td>
+                <td>
+                    <input type="text" name="item">
+                </td>
+            </tr>
+            <tr>
+                <td>Quantity: </td>
+                <td>
+                    <input type="text" name="quantity">
+                </td>
+            </tr>
+        </table>
+        <button type="submit">Submit</button>
+    </form>
+    <table>
+        <tr data-th-each="ord : ${order}">
+            <td>
+                <span data-th-text="${ord.product}"></span>
+            </td>
+            <td>
+                <span data-th-text="${ord.quantity}"></span>
+            </td>
+        </tr>
+        <tfoot>
+            <tr>
+              <td colspan="2">
+                <form method="POST" action="/checkout">
+                  <button type="submit">Checkout</button>
+                </form>
+              </td>
+            </tr>
+        </tfoot>
+    </table>
+</body>
+</html>
